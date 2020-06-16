@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures":{
+        "layer0": "artificial_evolution:items/blood_boots"
+    }
+}

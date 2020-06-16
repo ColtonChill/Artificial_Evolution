@@ -1,0 +1,23 @@
+{
+    "item.artificial_evolution.blood_bottle": "Blood Bottle",
+    "item.artificial_evolution.dna_bottle": "Genetic Material",
+    "item.artificial_evolution.needle": "Needle",
+    "item.artificial_evolution.syringe": "Syringe",
+    "item.artificial_evolution.meteorite_ingot": "Meteorite ingot",
+    "block.artificial_evolution.meteorite_ore": "Meteorite Ore",
+
+    "item.artificial_evolution.blood_helmet": "Blood Helmet",
+    "item.artificial_evolution.blood_chestplate": "Blood Chestplate",
+    "item.artificial_evolution.blood_leggings": "Blood Leggings",
+    "item.artificial_evolution.blood_boots": "Blood Boots",
+
+    "item.artificial_evolution.blood_sword": "Blood Sword",
+
+    "block.artificial_evolution.centrifuge": "Centrifuge",
+
+
+
+    "itemGroup.evo_tab": "Evolution",
+    "itemGroup.asc_tab": "Ascendant",
+    "itemGroup.eld_tab": "Eldritch"
+}

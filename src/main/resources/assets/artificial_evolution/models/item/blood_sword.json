@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures":{
+        "layer0": "artificial_evolution:items/blood_sword"
+    }
+}

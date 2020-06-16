@@ -1,0 +1,9 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "artificial_evolution:blocks/centrifuge_top",
+        "front":"artificial_evolution:blocks/centrifuge_front",
+        "side": "artificial_evolution:blocks/centrifuge_side"
+    }
+}
+
