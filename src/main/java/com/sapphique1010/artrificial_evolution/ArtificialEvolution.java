@@ -2,6 +2,7 @@ package com.sapphique1010.artrificial_evolution;
 
 import com.sapphique1010.artrificial_evolution.init.ModContainerTypes;
 import com.sapphique1010.artrificial_evolution.init.ItemInit;
+import com.sapphique1010.artrificial_evolution.init.ModEntityType;
 import com.sapphique1010.artrificial_evolution.world.gen.MeteoriteOreGen;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -40,6 +41,7 @@ public class ArtificialEvolution
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        ModEntityType.ENTITY_TYPES.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event) {    }
