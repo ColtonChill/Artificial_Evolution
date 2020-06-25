@@ -1,25 +1,36 @@
 package com.sapphique1010.artrificial_evolution.init;
 
+import com.sapphique1010.artrificial_evolution.entities.FoxWolfEntity;
 import com.sapphique1010.artrificial_evolution.objects.items.BloodSample;
 import com.sapphique1010.artrificial_evolution.objects.items.GeneticMaterial;
 import com.sapphique1010.artrificial_evolution.objects.items.SyringeItem;
 import com.sapphique1010.artrificial_evolution.ArtificialEvolution;
 import com.sapphique1010.artrificial_evolution.ArtificialEvolution.*;
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.LazyValue;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.ObjectHolder;
 
 import java.util.function.Supplier;
+
+import static com.sapphique1010.artrificial_evolution.init.ModEntityType.ENTITY_TYPES;
+import static com.sapphique1010.artrificial_evolution.init.ModEntityType.FOXWOLF_ENTITY;
 
 @Mod.EventBusSubscriber(modid = ArtificialEvolution.MOD_ID, bus = Bus.MOD)
 @ObjectHolder(ArtificialEvolution.MOD_ID)
@@ -38,9 +49,12 @@ public class ItemInit {
     public static final Item blood_chestplate = null;
     public static final Item blood_leggings = null;
     public static final Item blood_boots = null;
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+    public static final Item fox_wolf_spawn_egg = null;
+//    public static final EntityType<FoxWolfEntity> foxwolf = EntityType.Builder.create(EntityType::create,EntityClassification.CREATURE).tracker(32, 1, true).build("v0idstestmod.test_entity");
 
     @SubscribeEvent
-    public static void registerItems(final RegistryEvent.Register<Item> event){
+        public static void registerItems(final RegistryEvent.Register<Item> event){
         //Medical
         event.getRegistry().register(new BloodSample(new Item.Properties().group(EvoItemGroup.instance).maxStackSize(1)).setRegistryName("blood_bottle"));
         event.getRegistry().register(new GeneticMaterial(new Item.Properties().group(EvoItemGroup.instance).maxStackSize(1)).setRegistryName("dna_bottle"));
@@ -50,10 +64,15 @@ public class ItemInit {
         //tools
         event.getRegistry().register(new SwordItem(ModItemTier.OBSIDIAN,2,-2,new Item.Properties().group(EldritchItemGroup.instance).maxStackSize(1)).setRegistryName("blood_sword"));
         //armor
-        event.getRegistry().register(new ArmorItem(MyArmorMaterials.BLOOD, EquipmentSlotType.HEAD, new Item.Properties().group(EvoItemGroup.instance).maxStackSize(1)).setRegistryName("blood_helmet"));
-        event.getRegistry().register(new ArmorItem(MyArmorMaterials.BLOOD, EquipmentSlotType.CHEST, new Item.Properties().group(EvoItemGroup.instance).maxStackSize(1)).setRegistryName("blood_chestplate"));
-        event.getRegistry().register(new ArmorItem(MyArmorMaterials.BLOOD, EquipmentSlotType.LEGS, new Item.Properties().group(EvoItemGroup.instance).maxStackSize(1)).setRegistryName("blood_leggings"));
-        event.getRegistry().register(new ArmorItem(MyArmorMaterials.BLOOD, EquipmentSlotType.FEET, new Item.Properties().group(EvoItemGroup.instance).maxStackSize(1)).setRegistryName("blood_boots"));
+        event.getRegistry().register(new ArmorItem(MyArmorMaterials.BLOOD, EquipmentSlotType.HEAD, new Item.Properties().group(EldritchItemGroup.instance).maxStackSize(1)).setRegistryName("blood_helmet"));
+        event.getRegistry().register(new ArmorItem(MyArmorMaterials.BLOOD, EquipmentSlotType.CHEST, new Item.Properties().group(EldritchItemGroup.instance).maxStackSize(1)).setRegistryName("blood_chestplate"));
+        event.getRegistry().register(new ArmorItem(MyArmorMaterials.BLOOD, EquipmentSlotType.LEGS, new Item.Properties().group(EldritchItemGroup.instance).maxStackSize(1)).setRegistryName("blood_leggings"));
+        event.getRegistry().register(new ArmorItem(MyArmorMaterials.BLOOD, EquipmentSlotType.FEET, new Item.Properties().group(EldritchItemGroup.instance).maxStackSize(1)).setRegistryName("blood_boots"));
+        //spawn egg
+//        () -> EntityType.Builder.create(FoxWolfEntity::new, EntityClassification.CREATURE)
+//                .size(0.55F, 0.80F)
+//                .build(new ResourceLocation(ArtificialEvolution.MOD_ID, "fox_wolf_entity").toString());
+        event.getRegistry().register(new SupplierSpawnEggItem(null, FOXWOLF_ENTITY,14144467,13396256,new Item.Properties().group(EvoItemGroup.instance)).setRegistryName("fox_wolf_spawn_egg"));
     }
 
     public enum ModItemTier implements IItemTier{
@@ -74,7 +93,6 @@ public class ItemInit {
             this.attackDamage = attackDamage;
             this.enchantability = enchantability;
             this.repairMaterial = new LazyValue<>(repairMaterial);
-
         }
 
         @Override

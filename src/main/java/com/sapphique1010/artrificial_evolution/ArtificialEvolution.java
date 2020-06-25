@@ -35,13 +35,13 @@ public class ArtificialEvolution
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
 
+        // Register ourselves for server and other game events we are interested in
+        MinecraftForge.EVENT_BUS.register(this);
+        ModEntityType.ITEMS.register(modEventBus);
+        ModEntityType.ENTITY_TYPES.register(modEventBus);
 //        ModContainerTypes.CONTAINER_TYPE.register(modEventBus);
 
         modEventBus.addListener(this::doClientStuff);
-
-        // Register ourselves for server and other game events we are interested in
-        MinecraftForge.EVENT_BUS.register(this);
-        ModEntityType.ENTITY_TYPES.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event) {    }
